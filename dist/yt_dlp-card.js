@@ -1,8 +1,7 @@
-import {
-  LitElement,
-  html,
-  css,
-} from "https://cdn.jsdelivr.net/gh/lit/dist@2/core/lit-core.min.js";
+console.info("YT-DLP Card 0.1");
+const LitElement = window.LitElement || Object.getPrototypeOf(customElements.get("hui-masonry-view") );
+const html = LitElement.prototype.html;
+const css = LitElement.prototype.css;
 
 export class YTDLPCard extends LitElement {
   _hass;
