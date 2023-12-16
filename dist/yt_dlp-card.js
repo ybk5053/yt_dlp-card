@@ -78,7 +78,6 @@ export class YTDLPCard extends LitElement {
         top: -2px;
         left: 0;
         right: 0;
-        color: ${this._colour}};
       }
       .progress .value {
         background-color: #005eff;
@@ -189,7 +188,7 @@ export class YTDLPCard extends LitElement {
           </div>
           <div>
             <div class="progress" data-label="${downloaded}/${total}">
-              <span class="value" style="width:${percent}%;"></span>
+              <span class="value" style="width:${percent}%;color:${this._colour}"></span>
             </div>
           </div>
           <div>
