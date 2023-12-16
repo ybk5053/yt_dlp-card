@@ -39,7 +39,7 @@ export class YTDLPCard extends LitElement {
     }
     this._header = config.header === "" ? nothing : config.header;
     this._colour = config.colour === "" ? "#005eff" : config.colour;
-    this._entity = config.entity;
+    this._entity = config.entity === "" ? "yt_dlp.downloading" : config.entity;
     // call set hass() to immediately adjust to a changed entity
     // while editing the entity in the card editor
     if (this._hass) {
