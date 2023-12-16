@@ -1,5 +1,7 @@
 console.info("YT-DLP Card 0.1");
-const LitElement = window.LitElement || Object.getPrototypeOf(customElements.get("hui-masonry-view") );
+const LitElement =
+  window.LitElement ||
+  Object.getPrototypeOf(customElements.get("hui-masonry-view"));
 const html = LitElement.prototype.html;
 const css = LitElement.prototype.css;
 
@@ -51,121 +53,123 @@ export class YTDLPCard extends LitElement {
     return 3;
   }
 
-  static styles = css`
-    .rows {
-      padding: 5px;
-    }
-    .right {
-      float: right;
-    }
-
-    /* For progress bar */
-    .progress {
-      height: 1em;
-      width: 100%;
-      background-color: #c9c9c9;
-      position: relative;
-      border-radius: 5px;
-    }
-    .progress:before {
-      content: attr(data-label);
-      font-size: 1em;
-      position: absolute;
-      text-align: center;
-      top: -2px;
-      left: 0;
-      right: 0;
-      color: ${this._colour}};
-    }
-    .progress .value {
-      background-color: #005eff;
-      display: inline-block;
-      height: 100%;
-      border-radius: 5px;
-    }
-
-    /* For input */
-    .input-wrapper {
-      position: relative;
-      margin-top: 30px; // To create space for floating inputs
-      margin-inline: auto;
-    }
-    
-    .input {
-      box-sizing: border-box;
-      font-size: 1em;
-      width: 100%;
-      padding: 8px 0;
-      padding-right: 30px; // To avoid overlapping with the clear button
-      color: #333;
-      border: none;
-      border-bottom: 1px solid #ddd;
-      transition: border-color 250ms;
-      background-color: transparent;
-    
-      &:focus {
-        outline: none;
-        border-bottom-color: #777;
+  static get styles() {
+    return css`
+      .rows {
+        padding: 5px;
       }
-    
-      &::placeholder {
-        color: transparent;
+      .right {
+        float: right;
+      }
+
+      /* For progress bar */
+      .progress {
+        height: 1em;
+        width: 100%;
+        background-color: #c9c9c9;
+        position: relative;
+        border-radius: 5px;
+      }
+      .progress:before {
+        content: attr(data-label);
+        font-size: 1em;
+        position: absolute;
+        text-align: center;
+        top: -2px;
+        left: 0;
+        right: 0;
+        color: ${this._colour}};
+      }
+      .progress .value {
+        background-color: #005eff;
+        display: inline-block;
+        height: 100%;
+        border-radius: 5px;
+      }
+
+      /* For input */
+      .input-wrapper {
+        position: relative;
+        margin-top: 30px; // To create space for floating inputs
+        margin-inline: auto;
       }
       
-      // Hide Safari's autofill button
-      &::-webkit-contacts-auto-fill-button {
-        visibility: hidden;
-        pointer-events: none;
-        position: absolute;
-      }
-    }
-    
-    .label {
-      position: absolute;
-      top: 8px;
-      left: 0;
-      color: #43454e;
-      pointer-events: none;
-      transform-origin: left center;
-      transition: transform 250ms;
-      font-family: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052,
-        serif;
-    }
-    
-    .input:focus + .label,
-    .input:not(:placeholder-shown) + .label {
-      transform: translateY(-100%) scale(0.75);
-    }
-    
-    .clear {
-      cursor: pointer;
-      appearance: none;
-      -webkit-appearance: none;
-      position: absolute;
-      bottom: 8px;
-      right: 0; // To visually align with inputs right edge
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      border-radius: 50%;
-      height: 2em;
-      width: 2 em;
-      color: #FFFFFF;
-      transition: color 250ms;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    
-      &:hover,
-      &:focus {
+      .input {
+        box-sizing: border-box;
+        font-size: 1em;
+        width: 100%;
+        padding: 8px 0;
+        padding-right: 30px; // To avoid overlapping with the clear button
         color: #333;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        transition: border-color 250ms;
+        background-color: transparent;
+      
+        &:focus {
+          outline: none;
+          border-bottom-color: #777;
+        }
+      
+        &::placeholder {
+          color: transparent;
+        }
+        
+        // Hide Safari's autofill button
+        &::-webkit-contacts-auto-fill-button {
+          visibility: hidden;
+          pointer-events: none;
+          position: absolute;
+        }
       }
-    }
-    
-    .input:placeholder-shown + .label + .clear {
-      display: none;
-    }
-  `;
+      
+      .label {
+        position: absolute;
+        top: 8px;
+        left: 0;
+        color: #43454e;
+        pointer-events: none;
+        transform-origin: left center;
+        transition: transform 250ms;
+        font-family: "Iowan Old Style", "Palatino Linotype", "URW Palladio L", P052,
+          serif;
+      }
+      
+      .input:focus + .label,
+      .input:not(:placeholder-shown) + .label {
+        transform: translateY(-100%) scale(0.75);
+      }
+      
+      .clear {
+        cursor: pointer;
+        appearance: none;
+        -webkit-appearance: none;
+        position: absolute;
+        bottom: 8px;
+        right: 0; // To visually align with inputs right edge
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        border-radius: 50%;
+        height: 2em;
+        width: 2 em;
+        color: #FFFFFF;
+        transition: color 250ms;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      
+        &:hover,
+        &:focus {
+          color: #333;
+        }
+      }
+      
+      .input:placeholder-shown + .label + .clear {
+        display: none;
+      }
+    `;
+  }
 
   render() {
     let items = [];
@@ -208,13 +212,27 @@ export class YTDLPCard extends LitElement {
           ${items}
 
           <div class="input-wrapper">
-            <input autocomplete="off" class="input" type="text" id="durl" placeholder="URL" />
-            <label class="label" for="durl">
-              Download Link
-            </label>
-            <button class="clear" aria-label="Clear input" @click="${() => this._download(this.shadowRoot.getElementById("durl").value)}">
+            <input
+              autocomplete="off"
+              class="input"
+              type="text"
+              id="durl"
+              placeholder="URL"
+            />
+            <label class="label" for="durl"> Download Link </label>
+            <button
+              class="clear"
+              aria-label="Clear input"
+              @click="${() =>
+                this._download(this.shadowRoot.getElementById("durl").value)}"
+            >
               <svg viewBox="0 0 16 16" width="12" height="12">
-                <path d="M 8 1 L 8 15 M 1 10 L 8 15 M 15 10 L 8 15 M 1 16 L 15 16" fill="none" stroke-width="2" stroke="currentColor" />
+                <path
+                  d="M 8 1 L 8 15 M 1 10 L 8 15 M 15 10 L 8 15 M 1 16 L 15 16"
+                  fill="none"
+                  stroke-width="2"
+                  stroke="currentColor"
+                />
               </svg>
             </button>
           </div>
@@ -228,7 +246,11 @@ export class YTDLPCard extends LitElement {
   }
 
   static getStubConfig() {
-    return { entity: "yt_dlp.downloading", header: "YT-DLP Card", colour: "#005eff" };
+    return {
+      entity: "yt_dlp.downloading",
+      header: "YT-DLP Card",
+      colour: "#005eff",
+    };
   }
 }
 
@@ -273,9 +295,9 @@ function formatSeconds(seconds) {
   }
 
   if (s >= 3600) {
-    return `${Math.floor(s/3600)}H ${Math.floor(s%3600/60)}Min`;
+    return `${Math.floor(s / 3600)}H ${Math.floor((s % 3600) / 60)}Min`;
   } else if (s >= 60) {
-    return `${Math.floor(s/60)}Min ${Math.floor(s%60)}s`;
+    return `${Math.floor(s / 60)}Min ${Math.floor(s % 60)}s`;
   } else {
     return `${Math.floor(s)}sec`;
   }
