@@ -78,6 +78,7 @@ export class YTDLPCard extends LitElement {
         top: -2px;
         left: 0;
         right: 0;
+        color: black;
       }
       .progress .value {
         background-color: #005eff;
