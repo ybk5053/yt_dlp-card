@@ -127,7 +127,6 @@ export class YTDLPCard extends LitElement {
         position: absolute;
         top: 8px;
         left: 0;
-        color: #43454e;
         pointer-events: none;
         transform-origin: left center;
         transition: transform 250ms;
