@@ -34,12 +34,12 @@ export class YTDLPCard extends LitElement {
   // The user supplied configuration. Throw an exception and Home Assistant
   // will render an error card.
   setConfig(config) {
-    if (!config.entity || config.entity !== "yt_dlp.downloading") {
-      throw new Error("You need to define yt_dlp.downloading as entity");
+    if (!config.entity || config.entity !== "downloader.yt_dlp") {
+      throw new Error("You need to define downloader.yt_dlp as entity");
     }
     this._header = config.header === "" ? nothing : config.header;
     this._colour = config.colour === "" ? "#005eff" : config.colour;
-    this._entity = config.entity === "" ? "yt_dlp.downloading" : config.entity;
+    this._entity = config.entity === "" ? "downloader.yt_dlp" : config.entity;
     // call set hass() to immediately adjust to a changed entity
     // while editing the entity in the card editor
     if (this._hass) {
@@ -246,7 +246,7 @@ export class YTDLPCard extends LitElement {
 
   static getStubConfig() {
     return {
-      entity: "yt_dlp.downloading",
+      entity: "downloader.yt_dlp",
       header: "YT-DLP Card",
       colour: "#005eff",
     };
